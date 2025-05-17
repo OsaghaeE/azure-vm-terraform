@@ -6,6 +6,9 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
+variables:
+- group: TerraformSecrets
+
 steps:
 - task: TerraformInstaller@0
   inputs:
