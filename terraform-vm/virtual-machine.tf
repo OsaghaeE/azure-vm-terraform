@@ -8,21 +8,21 @@ resource "azurerm_resource_group" "main" {
 }
 
 resource "azurerm_virtual_network" "main" {
-  name                = "dev-vnet"
+  name                = "dep-vnet"
   address_space       = ["10.0.0.0/16"]
   location            = var.location
   resource_group_name = azurerm_resource_group.main.name
 }
 
 resource "azurerm_subnet" "main" {
-  name                 = "dev-subnet"
+  name                 = "dep-subnet"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
   address_prefixes     = ["10.0.1.0/25"]
 }
 
 resource "azurerm_network_interface" "main" {
-  name                = "dev-nic"
+  name                = "dep-nic"
   location            = var.location
   resource_group_name = azurerm_resource_group.main.name
 
@@ -34,7 +34,7 @@ resource "azurerm_network_interface" "main" {
 }
 
 resource "azurerm_windows_virtual_machine" "main" {
-  name                = "medvm"
+  name                = "dep-vm"
   resource_group_name = azurerm_resource_group.main.name
   location            = var.location
   size                = "Standard_B2s"
