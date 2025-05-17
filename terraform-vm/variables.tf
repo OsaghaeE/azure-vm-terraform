@@ -3,5 +3,5 @@ variable "location" {
 }
 
 variable "resource_group_name" {
-  default = "devops-vm-rg"
+  default = "devops1-rg"
 }
